@@ -1,6 +1,8 @@
 from django.contrib import admin
 
+from .models import Mail
 
-@admin.register
+
+@admin.register(Mail)
 class MailAdmin(admin.ModelAdmin):
-    pass
+    readonly_fields = ['dispatch_time', 'delay']
