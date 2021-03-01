@@ -1,8 +1,13 @@
-from django.views.generic.list import ListView
+from django.views.generic import ListView, CreateView
+from django.urls import reverse_lazy
 
 from .models import Mail
+from .forms import SendMailForm
+
+import logging
 
 LAST_QTY = 10
+logger = logging.getLogger(__name__)
 
 
 class MailListView(ListView):
@@ -18,3 +23,10 @@ class MailListView(ListView):
         context = super().get_context_data()
         context['last_qty'] = LAST_QTY
         return context
+
+
+class SendMailView(CreateView):
+    model = Mail
+    form_class = SendMailForm
+    success_url = reverse_lazy('mailsender:mail_list')
+    template_name = 'send_mail.html'

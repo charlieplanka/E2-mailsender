@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block extra_head %}
+<title>Отправить письмо</title>
+{% endblock %}
+
+{% block content %}
+<form method="post" class="uniForm">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <input type="submit" value="Отправить" class="btn btn-primary mt-3">
+</form>
+{% endblock %}

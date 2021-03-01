@@ -5,4 +5,4 @@ from .models import Mail
 
 @admin.register(Mail)
 class MailAdmin(admin.ModelAdmin):
-    readonly_fields = ['dispatch_time', 'delay']
+    readonly_fields = ['dispatch_time', 'timeout']

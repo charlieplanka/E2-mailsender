@@ -5,33 +5,29 @@
 {% endblock %}
 
 {% block content %}
-<div class="row justify-content-center">
-<div class="col-8 mt-5">
-    <h5>Последние {{ last_qty }} писем:</h5>
-        <table class="table table-borderless mt-4">
-            <thead class="table-light">
-                <tr>
-                    <th scope="col">Адрес</th>
-                    <th scope="col">Текст</th>
-                    <th scope="col">Время отправки</th>
-                    <th scope="col">Статус</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for mail in last_mails %}
-                <tr>
-                    <td>{{ mail.address }}</td>
-                    <td>{{ mail.text }}</td>
-                    <td>{{ mail.dispatch_time|date:"d M Y" }}, {{ mail.dispatch_time|time:"G:i:s" }}</td>
-                    {% if mail.sent %}
-                        <td>Отправлено</td>
-                    {% else %}
-                        <td>В очереди на отправку</td>
-                    {% endif %}
-                </tr>
-                {% endfor %} 
-            </tbody>
-        </table>
-</div>
-</div>
+<h5>Последние {{ last_qty }} писем:</h5>
+    <table class="table table-borderless mt-4">
+        <thead class="table-light">
+            <tr>
+                <th scope="col">Адрес</th>
+                <th scope="col">Текст</th>
+                <th scope="col">Время отправки</th>
+                <th scope="col">Статус</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for mail in last_mails %}
+            <tr>
+                <td>{{ mail.address }}</td>
+                <td>{{ mail.text }}</td>
+                <td>{{ mail.dispatch_time|date:"d M Y" }}, {{ mail.dispatch_time|time:"G:i:s" }}</td>
+                {% if mail.sent %}
+                    <td>Отправлено</td>
+                {% else %}
+                    <td>В очереди на отправку</td>
+                {% endif %}
+            </tr>
+            {% endfor %} 
+        </tbody>
+    </table>
 {% endblock %}
