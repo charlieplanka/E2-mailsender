@@ -16,7 +16,7 @@ class MailListView(ListView):
 
     def get_queryset(self):
         qs = super().get_queryset()
-        qs_last = qs.order_by('-id')[:LAST_QTY]
+        qs_last = qs.order_by('-created_time')[:LAST_QTY]
         return qs_last
 
     def get_context_data(self, **kwargs):
