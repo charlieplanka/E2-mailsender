@@ -43,7 +43,7 @@ def send_new_mail(mail):
             recipient_list=[mail.address],
             fail_silently=False,
         )
-        logger.info('Письмо успешно отправлено')
+        logger.info(f'Письмо успешно отправлено адресату: {mail.address}')
         change_mail_status(mail)
     except Exception as e:
         logging.error(f'При отправке письма произошла ошибка: {e}')

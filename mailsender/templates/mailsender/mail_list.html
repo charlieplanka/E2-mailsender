@@ -20,14 +20,18 @@
             {% for mail in last_mails %}
             <tr>
                 <td>{{ mail.address }}</td>
-                <td>{{ mail.text }}</td>
+                <td style="max-width: 400px;">{% if mail.text|length <= 100 %}
+                    {{ mail.text }}
+                {% else %}
+                    {{ mail.text|slice:'0:100' }}..
+                {% endif %}</td>                
                 <td>{{ mail.created_time|date:"d M Y" }} {{ mail.created_time|time:"G:i:s" }}</td>
                 <td>{{ mail.dispatch_time|date:"d M Y" }} {{ mail.dispatch_time|time:"G:i:s" }}</td>
-                {% if mail.sent %}
-                    <td>Отправлено</td>
+                <td>{% if mail.sent %}
+                    Отправлено
                 {% else %}
-                    <td>Ожидает отправки</td>
-                {% endif %}
+                    Ожидает отправки
+                {% endif %}</td>
             </tr>
             {% endfor %} 
         </tbody>
